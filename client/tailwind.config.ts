@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindCss from "tailwindcss-animate";
 
 export default {
     darkMode: ["class"],
@@ -11,7 +12,7 @@ export default {
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			foreground: 'var(--foreground)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -26,7 +27,8 @@ export default {
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				foreground: 'hsl(var(--secondary-foreground))',
+				text: 'var(--secondary-text)'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -58,5 +60,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindCss],
 } satisfies Config;

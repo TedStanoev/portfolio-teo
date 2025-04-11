@@ -1,95 +1,42 @@
-import BlurFade from '@/components/animated/BlurFade';
-import BlurFadeText from '@/components/animated/BlurFadeText';
-// import { ModeToggle } from "@/components/mode-toggle";
+import Link from 'next/link';
+
+import { DATA } from '@/data';
+import BlurFade from '@/components/animated/BlurFadeContainer';
+import BlurFadeContainerText from '@/components/animated/BlurFadeText';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { ResumeCard } from '@/components/cards/ResumeCard';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { DATA } from '@/data';
-import Link from 'next/link';
-import { SocialIcon } from 'react-social-icons';
+import SectionTitle from '@/components/SectionTItle';
+import HeroSection from '@/components/sections/Hero';
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
     <>
-      <main className="flex flex-col min-h-[100dvh] space-y-10 py-12 sm:py-24 px-4">
-        <section id="hero">
-          <div className="mx-auto w-full max-w-2xl space-y-8">
-            <div className="gap-7 flex flex-row-reverse justify-between">
-              <div className="flex-col flex flex-1 gap-2">
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-                  yOffset={8}
-                  text={DATA.name}
-                />
-                <div className="ms-3">
-                  <BlurFadeText
-                    className="max-w-[600px] md:text-xl"
-                    delay={BLUR_FADE_DELAY}
-                    text={DATA.description}
-                  />
-                  <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                    <div className="flex gap-x-1 pt-1 font-sans text-sm text-muted-foreground print:hidden">
-                      {DATA.contact.email ? (
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <SocialIcon
-                              network="email"
-                              href={`mailto:${DATA.contact.email}`}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>Email</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      ) : null}
-                      {Object.entries(DATA.contact.social).map(
-                        ([name, social]) => (
-                          <Tooltip key={name}>
-                            <TooltipTrigger>
-                              <SocialIcon
-                                network={social.network}
-                                href="social.url"
-                                target="_blank"
-                                rel="noreferrer"
-                              />
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        )
-                      )}
-                    </div>
-                  </BlurFade>
-                </div>
-              </div>
-              <BlurFade delay={BLUR_FADE_DELAY}>
-                <Avatar className="size-28 border">
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
-              </BlurFade>
-            </div>
-          </div>
+      <main className="flex flex-col min-h-[100dvh] space-y-10">
+        <section
+          id="hero"
+          className="bg-gradient-to-b from-gray-300 to-white-100 py-12 sm:py-24 px-4 h-screen"
+        >
+          <HeroSection />
         </section>
         <section id="about">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+          <BlurFade
+            delay={BLUR_FADE_DELAY * 3}
+            className="mb-10 sticky top-0 z-10"
+            animateOnView
+          >
+            <SectionTitle title="About Me" link="/?#about" />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <p className="text-pretty text-sm text-muted-foreground">
-              {DATA.summary}
-            </p>
-          </BlurFade>
+          <div className="flex flex-col justify-center mx-auto w-full max-w-4xl space-y-8">
+            <BlurFadeContainerText
+              text={DATA.summary}
+              delay={BLUR_FADE_DELAY * 4}
+              className="mx-auto"
+              animateByCharacter
+            />
+          </div>
         </section>
         <section id="skills">
           <div className="flex min-h-0 flex-col gap-y-3">

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion, useInView, Variants } from "motion/react";
-import { useRef } from "react";
+import { AnimatePresence, motion, useInView, Variants } from 'motion/react';
+import { useMemo, useRef } from 'react';
 
-interface BlurFadeProps {
+interface BlurFadeContainerProps {
   children: React.ReactNode;
   className?: string;
   variant?: {
@@ -13,23 +13,27 @@ interface BlurFadeProps {
   duration?: number;
   delay?: number;
   yOffset?: number;
-  inView?: boolean;
   inViewMargin?: string;
   blur?: string;
+  animateOnView?: boolean;
 }
-const BlurFade = ({
+const BlurFadeContainer = ({
   children,
   className,
   variant,
   duration = 0.4,
   delay = 0,
   yOffset = 6,
-  inView = false,
-  blur = "6px",
-}: BlurFadeProps) => {
+  blur = '6px',
+  animateOnView = false,
+}: BlurFadeContainerProps) => {
   const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true, margin: "-50px" });
-  const isInView = !inView || inViewResult;
+  const inViewResult = useInView(ref, { once: true, margin: '-50px' });
+
+  const isInView = useMemo(
+    () => (animateOnView ? inViewResult : true),
+    [animateOnView, inViewResult]
+  );
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
     visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
@@ -40,13 +44,13 @@ const BlurFade = ({
       <motion.div
         ref={ref}
         initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        animate={isInView ? 'visible' : 'hidden'}
         exit="hidden"
         variants={combinedVariants}
         transition={{
           delay: 0.04 + delay,
           duration,
-          ease: "easeOut",
+          ease: 'easeOut',
         }}
         className={className}
       >
@@ -56,4 +60,4 @@ const BlurFade = ({
   );
 };
 
-export default BlurFade;
+export default BlurFadeContainer;

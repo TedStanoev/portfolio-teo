@@ -1,19 +1,7 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { DATA } from "@/data";
-import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next';
+import { DATA } from '@/data';
+import './globals.css';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 export const metadata: Metadata = {
   title: DATA.name,
@@ -21,10 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
-    url: DATA.url,
     siteName: `${DATA.name}`,
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
   robots: {
     index: true,
@@ -32,14 +19,14 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   twitter: {
     title: `${DATA.name}`,
-    card: "summary_large_image",
+    card: 'summary_large_image',
   },
 };
 
@@ -50,11 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto",
-        )}
-      >
+      <body className="min-h-screen bg-background font-montesserat antialiased w-full">
         <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
