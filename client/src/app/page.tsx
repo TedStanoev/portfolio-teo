@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 import { DATA } from '@/data';
 import BlurFade from '@/components/animated/BlurFadeContainer';
-import BlurFadeContainerText from '@/components/animated/BlurFadeText';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { ResumeCard } from '@/components/cards/ResumeCard';
 import { Badge } from '@/components/ui/badge';
 import SectionTitle from '@/components/SectionTItle';
 import HeroSection from '@/components/sections/Hero';
+import LabeledParagraph from '@/components/LabeledParagraph';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -17,25 +17,27 @@ export default function Page() {
       <main className="flex flex-col min-h-[100dvh] space-y-10">
         <section
           id="hero"
-          className="bg-gradient-to-b from-gray-300 to-white-100 py-12 sm:py-24 px-4 h-screen"
+          className="bg-gradient-to-b from-tertiary to-white-100 py-12 sm:py-24 px-4 h-screen"
         >
           <HeroSection />
         </section>
         <section id="about">
-          <BlurFade
-            delay={BLUR_FADE_DELAY * 3}
-            className="mb-10 sticky top-0 z-10"
-            animateOnView
-          >
-            <SectionTitle title="About Me" link="/?#about" />
-          </BlurFade>
-          <div className="flex flex-col justify-center mx-auto w-full max-w-4xl space-y-8">
-            <BlurFadeContainerText
-              text={DATA.summary}
-              delay={BLUR_FADE_DELAY * 4}
-              className="mx-auto"
-              animateByCharacter
-            />
+          <div className="w-full">
+            <BlurFade
+              delay={BLUR_FADE_DELAY * 3}
+              className="mb-10 sticky top-0 z-10"
+              animateOnView
+            >
+              <SectionTitle title="About Me" link="/?#about" />
+            </BlurFade>
+            <div className="grid grid-rows-3 grid-cols-2 gap-x-52 gap-y-20 justify-between mx-auto w-full max-w-4xl py-20">
+              <LabeledParagraph text="24 years old" label="Age" delay={BLUR_FADE_DELAY * 3} />
+              <LabeledParagraph text="3+ years" label="Work experience" delay={BLUR_FADE_DELAY * 6} />
+              <LabeledParagraph text="SoftZen" label="Current Company" delay={BLUR_FADE_DELAY * 9} />
+              <LabeledParagraph text="Sofia, Bulgaria" label="City" delay={BLUR_FADE_DELAY * 12} />
+              <LabeledParagraph text="SoftUni" label="Graduated" delay={BLUR_FADE_DELAY * 15} />
+              <LabeledParagraph text="UNWE" label="Student at" delay={BLUR_FADE_DELAY * 18} />
+            </div>
           </div>
         </section>
         <section id="skills">
