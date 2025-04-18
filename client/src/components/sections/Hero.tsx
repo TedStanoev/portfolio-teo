@@ -25,7 +25,7 @@ export default function HeroSection() {
   return (
     <div className="flex flex-col justify-center mx-auto w-full max-w-2xl space-y-8">
       <BlurFade className="flex justify-center" delay={BLUR_FADE_DELAY}>
-        <Avatar className="size-52 border">
+        <Avatar className="size-52 border bg-avatar-background p-5 border-none">
           <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
           <AvatarFallback className="text-4xl">{DATA.initials}</AvatarFallback>
         </Avatar>
