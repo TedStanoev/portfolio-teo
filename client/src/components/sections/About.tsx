@@ -1,44 +1,56 @@
+'use client';
+
+import {
+  faUser,
+  faHeart,
+  faLightbulb,
+  faBullseye,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { DATA } from '@/data';
+
 import BlurFade from '../animated/BlurFadeContainer';
-import SectionTitle from '../SectionTItle';
+import SectionTitle from '../typography/SectionTItle';
+import IconPill from '../pills/IconPill';
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function AboutSection() {
-  const paragraphClassName = 'bg-secondary rounded-full p-4 text-center text-secondary-text';
-
   return (
-    <div className="w-full">
-      <BlurFade delay={BLUR_FADE_DELAY * 3} animateOnView>
+    <div className="flex flex-col m-16 bg-secondary rounded-2xl border-y-2 border-tertiary-blur py-5">
+      <BlurFade
+        delay={BLUR_FADE_DELAY * 3}
+        className="w-full border-b-2 border-black"
+        animateOnView
+      >
         <SectionTitle title="About Me" link="/?#about" />
       </BlurFade>
-      <div className="flex flex-col gap-y-12 mx-auto w-full max-w-4xl py-20 text-xl font-medium">
-        <BlurFade delay={BLUR_FADE_DELAY * 5} animateOnView>
-          <p className={paragraphClassName}>
-            I am {new Date().getFullYear() - new Date(2000, 9).getFullYear()}{' '}
-            years old from Sofia, Bulgaria. I am a full-stack developer with 3
-            years of experience, specialized with React, NodeJS and Typescript.
-          </p>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 7} animateOnView>
-          <p className={paragraphClassName}>
-            I have build web projects from the ground up, handling both the
-            frontend and backend development.
-          </p>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 9} animateOnView>
-          <p className={paragraphClassName}>
-            My goal is to build web and mobile applications with attractive,
-            intuitive UI/UX, optimized performance, and a clean, testable, and
-            maintainable codebase.
-          </p>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 12} animateOnView>
-          <p className={paragraphClassName}>
-            I am adaptable and tend to use the best and most popular
-            technologies and frameworks, along with best practices to turn ideas
-            into software. I am always eager to improve and perfect my skills.
-          </p>
-        </BlurFade>
+
+      <div className="my-20 flex flex-col gap-10 items-center justify-center mx-auto w-full max-w-5xl">
+        <IconPill
+          text={`I am ${DATA.years} years old from Sofia, Bulgaria`}
+          blurDelay={BLUR_FADE_DELAY * 10}
+          iconProps={{ icon: faUser, beat: true }}
+          animateOnView
+        />
+        <IconPill
+          text={`My passion is to create software like bussiness websites, web applications, mobile apps and games`}
+          blurDelay={BLUR_FADE_DELAY * 10}
+          iconProps={{ icon: faHeart, beat: true }}
+          animateOnView
+        />
+        <IconPill
+          text={`I am a Mid-Level Full-Stack Developer at SoftZen. I am also studying bussiness and economics at University of National and World Economy`}
+          blurDelay={BLUR_FADE_DELAY * 10}
+          iconProps={{ icon: faLightbulb, beat: true }}
+          animateOnView
+        />
+        <IconPill
+          text={`My goal is to have my own software company one day`}
+          blurDelay={BLUR_FADE_DELAY * 10}
+          iconProps={{ icon: faBullseye, beat: true }}
+          animateOnView
+        />
       </div>
     </div>
   );

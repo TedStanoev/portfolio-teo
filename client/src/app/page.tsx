@@ -16,18 +16,15 @@ export default function Page() {
       <main className="flex flex-col min-h-[100dvh]">
         <section
           id="hero"
-          className="bg-primary-background py-12 sm:py-24 px-4 h-screen"
+          className="py-12 sm:pt-24 px-4 h-screen"
         >
           <HeroSection />
         </section>
-        <section id="about" className="bg-secondary-background">
+        <section id="about" className="min-h-[100dvh]">
           <AboutSection />
         </section>
         <section id="skills">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <h2 className="text-xl font-bold">Skills</h2>
-            </BlurFade>
             <div className="flex flex-wrap gap-1 justify-center">
               {DATA.skills.map((skill, id) => (
                 <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>

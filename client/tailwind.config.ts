@@ -32,12 +32,16 @@ export default {
           text: 'var(--primary-text)',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: 'var(--secondary)',
           foreground: 'hsl(var(--secondary-foreground))',
           text: 'var(--secondary-text)',
         },
         tertiary: {
           DEFAULT: 'hsl(var(--tertiary))',
+          blur: 'hsl(var(--tertiary-blur))',
+        },
+        important: {
+          DEFAULT: 'hsl(var(--important))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
