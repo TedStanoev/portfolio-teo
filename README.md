@@ -26,4 +26,9 @@ This website highlights my skills and experience as a developer.
 Want to see it in action locally? Just run:
 
 ```bash
+pnpm install
+```
+and then:
+
+```bash
 pnpm dev
